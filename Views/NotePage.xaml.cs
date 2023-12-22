@@ -13,8 +13,9 @@ public partial class NotePage : ContentPage
         InitializeComponent();
 
         string appDataPath = FileSystem.AppDataDirectory;
+       
         string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
-
+        
         LoadNote(Path.Combine(appDataPath, randomFileName));
     }
 
