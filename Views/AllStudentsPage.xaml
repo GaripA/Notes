@@ -20,6 +20,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />    <!-- For Name and Surname -->
                             <ColumnDefinition Width="Auto" /> <!-- For the "Delete" button -->
+                            <ColumnDefinition Width="Auto" /> <!-- For the "Activities" button -->
                         </Grid.ColumnDefinitions>
 
                         <StackLayout Grid.Column="0" Orientation="Horizontal" Spacing="5">
@@ -29,6 +30,8 @@
                         </StackLayout>
 
                         <Button Text="Supprimer" Clicked="Supprimer_Clicked" CommandParameter="{Binding .}" Grid.Column="1" />
+
+                        <Button Text="Activité" Grid.Column="2" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

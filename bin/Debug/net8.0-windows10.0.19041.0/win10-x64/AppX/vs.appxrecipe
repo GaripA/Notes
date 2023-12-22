@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\PC\Downloads\maui-samples-main\maui-samples-main\8.0\Tutorials\CreateNetMauiApp\Notes\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-12-22T14:53:03.865</Modified>
+      <Modified>2023-12-22T19:16:21.346</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\PC\Downloads\maui-samples-main\maui-samples-main\8.0\Tutorials\CreateNetMauiApp\Notes\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-12-22T14:53:03.454</Modified>
+      <Modified>2023-12-22T19:16:20.933</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\Downloads\maui-samples-main\maui-samples-main\8.0\Tutorials\CreateNetMauiApp\Notes\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Notes.runtimeconfig.json">
       <PackagePath>Notes.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\Downloads\maui-samples-main\maui-samples-main\8.0\Tutorials\CreateNetMauiApp\Notes\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Notes.dll">
       <PackagePath>Notes.dll</PackagePath>
-      <Modified>2023-12-22T14:53:01.911</Modified>
+      <Modified>2023-12-22T19:16:19.536</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\Downloads\maui-samples-main\maui-samples-main\8.0\Tutorials\CreateNetMauiApp\Notes\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>Notes.exe</PackagePath>
-      <Modified>2023-12-22T14:53:01.952</Modified>
+      <Modified>2023-12-22T19:16:19.575</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\Downloads\maui-samples-main\maui-samples-main\8.0\Tutorials\CreateNetMauiApp\Notes\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>

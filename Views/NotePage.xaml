@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.NotePage"
-             Title="Note">
-    <VerticalStackLayout Spacing="10" Margin="5">
+             Title="Add an activity">
+    <VerticalStackLayout Spacing="10" Margin="5" VerticalOptions="CenterAndExpand">
         <Editor x:Name="TextEditor"
-                Placeholder="Enter your note"
+                Placeholder="Enter the name of the activity"
                 Text="{Binding Text}"
-                HeightRequest="100" />
+                HeightRequest="50"  VerticalOptions="CenterAndExpand"/>
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
             <Button Text="Save"

@@ -56,5 +56,10 @@ namespace Notes.Models
                 Console.WriteLine($"Erreur lors de l'écriture dans le fichier : {ex}");
             }
         }
+        public List<int> GetStudentIds()
+        {
+            // Retourne une liste d'identifiants uniques pour les étudiants
+            return Students.Select(student => student.Id).ToList();
+        }   
     }
 }
