@@ -16,4 +16,3 @@ public static class MauiProgram
 		return builder.Build();
 	}
 }
-// test pr voir si ca fontionne.
