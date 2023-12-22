@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Notes.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"> 
 
     <TabBar>
         <ShellContent
@@ -14,6 +14,10 @@
         <ShellContent
             Title="Teacher"
             ContentTemplate="{DataTemplate views:AllTeachersPage}"
+            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+        <ShellContent
+            Title="Student"
+            ContentTemplate="{DataTemplate views:AllStudentsPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         
         <ShellContent
