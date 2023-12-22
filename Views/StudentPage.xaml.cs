@@ -18,7 +18,7 @@ namespace Notes.Views
 
         private async void Enregistrer_Clicked(object sender, EventArgs e)
         {
-            // Retrieve name, surname, and class from input fields
+            try{// Retrieve name, surname, and class from input fields
             string nom = txtNom.Text;
             string prenom = txtPrenom.Text;
             string classe = txtClasse.Text;
@@ -50,7 +50,11 @@ namespace Notes.Views
             allStudents.SaveStudents();
 
             // Navigate to the AllStudentsPage
-            await Shell.Current.GoToAsync(nameof(AllStudentsPage));
+            await Shell.Current.GoToAsync(nameof(AllStudentsPage));}
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erreur", $"Une erreur s'est produite : {ex.Message}", "OK");
+            }
         }
     }
 }

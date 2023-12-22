@@ -1,4 +1,4 @@
-﻿// AllStudents.cs
+﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.Json;
@@ -11,24 +11,50 @@ namespace Notes.Models
 
         public AllStudents()
         {
-            // Load students from file or create a new collection
+            // Charge les étudiants existants ou crée une nouvelle collection
             Students = LoadStudents() ?? new ObservableCollection<Student>();
         }
 
-        public void SaveStudents()
+        private string GetFilePath()
         {
-            string json = JsonSerializer.Serialize(Students);
-            File.WriteAllText("students.json", json);
+            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            return Path.Combine(folderPath, "students.json");
         }
 
         private ObservableCollection<Student> LoadStudents()
         {
-            if (File.Exists("students.json"))
+            string filePath = GetFilePath();
+
+            try
             {
-                string json = File.ReadAllText("students.json");
-                return JsonSerializer.Deserialize<ObservableCollection<Student>>(json);
+                if (File.Exists(filePath))
+                {
+                    string json = File.ReadAllText(filePath);
+                    return JsonSerializer.Deserialize<ObservableCollection<Student>>(json);
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de la lecture du fichier : {ex}");
+            }
+
             return null;
+        }
+
+        public void SaveStudents()
+        {
+            string filePath = GetFilePath();
+            string json = JsonSerializer.Serialize(Students);
+
+            try
+            {
+                // Crée le fichier s'il n'existe pas
+                File.WriteAllText(filePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de l'écriture dans le fichier : {ex}");
+            }
         }
     }
 }
