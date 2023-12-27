@@ -7,13 +7,14 @@
     Shell.FlyoutBehavior="Disabled"> 
 
     <TabBar>
-        <ShellContent
-            Title="Activities"
-            ContentTemplate="{DataTemplate views:AllNotesPage}"
-            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+        
         <ShellContent
             Title="Teacher"
             ContentTemplate="{DataTemplate views:AllTeachersPage}"
+            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+        <ShellContent
+            Title="All Activities"
+            ContentTemplate="{DataTemplate views:AllActivitiesPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         <ShellContent
             Title="Student"

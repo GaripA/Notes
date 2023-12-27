@@ -13,6 +13,8 @@ namespace Notes.Views
             BindingContext = new AllStudents();
         }
 
+       
+
         private async void AddStudent_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync(nameof(StudentPage));
