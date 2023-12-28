@@ -24,17 +24,17 @@ namespace Notes.Views
 
         private async void AddActivity_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(ActivityPage));
+            await Navigation.PushAsync(new ActivityPage());
         }
 
         private void Supprimer_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is Activity activity)
             {
-                // Supprimer l'activité de la liste
+                // Remove the activity from the list
                 allActivities.Activities.Remove(activity);
 
-                // Enregistrer les activités dans le fichier
+                // Save activities to the file
                 allActivities.SaveActivities();
             }
         }

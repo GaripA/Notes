@@ -10,11 +10,21 @@ namespace Notes.Views
         {
             InitializeComponent();
             BindingContext = new AllTeachers();
+            
+            // Attacher l'événement Appearing
+            this.Appearing += AllTeachersPage_Appearing;
+        }
+
+        private void AllTeachersPage_Appearing(object sender, EventArgs e)
+        {
+            // Rechargez la liste des enseignants chaque fois que la page apparaît
+            ((AllTeachers)BindingContext).LoadTeachers();
         }
 
         private async void AddTeacher_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(TeacherPage));
+            // Naviguer vers la page TeacherPage
+            await Navigation.PushAsync(new TeacherPage());
         }
 
         private void Supprimer_Clicked(object sender, EventArgs e)
