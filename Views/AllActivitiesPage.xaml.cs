@@ -7,10 +7,14 @@ namespace Notes.Views
     public partial class AllActivitiesPage : ContentPage
     {
         private AllActivities allActivities;
+        private AllTeachers allTeachers;
 
         public AllActivitiesPage()
         {
             InitializeComponent();
+            allActivities = new AllActivities();
+            allTeachers = new AllTeachers();
+            BindingContext = allActivities;
         }
 
         protected override void OnAppearing()

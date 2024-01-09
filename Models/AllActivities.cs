@@ -1,4 +1,5 @@
-﻿using System;
+﻿// AllActivities.cs
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Notes.Models
             return Path.Combine(appDataPath, "activities.json");
         }
 
-        private ObservableCollection<Activity> LoadActivities()
+        public ObservableCollection<Activity> LoadActivities()
         {
             string filePath = GetFilePath();
 
@@ -68,6 +69,19 @@ namespace Notes.Models
         {
             Activities.Remove(activity);
             SaveActivities();
+        }
+
+        public void LoadActivitiesForTeacher(int teacherId)
+        {
+            // Filter activities based on the teacher's ID
+            var activitiesForTeacher = Activities.Where(a => a.ResponsibleTeacherId == teacherId).ToList();
+
+            // Clear and re-add filtered activities to the ObservableCollection
+            Activities.Clear();
+            foreach (var activity in activitiesForTeacher)
+            {
+                Activities.Add(activity);
+            }
         }
     }
 }

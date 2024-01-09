@@ -2,31 +2,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.AllTeachersPage"
              Title="All Teachers">
-
     <StackLayout>
         <Button Text="Add Teacher" Clicked="AddTeacher_Clicked" />
         <CollectionView x:Name="teachersCollection"
                         ItemsSource="{Binding Teachers}"
                         Margin="20">
-
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
             </CollectionView.ItemsLayout>
-
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />    <!-- Pour le nom et prénom -->
                             <ColumnDefinition Width="Auto" /> <!-- Pour le bouton "Supprimer" -->
+                            <ColumnDefinition Width="Auto" /> <!-- Pour le bouton "Lier à une activité" -->
                         </Grid.ColumnDefinitions>
-
                         <StackLayout Grid.Column="0" Orientation="Horizontal" Spacing="5">
                             <Label Text="{Binding Nom}" FontSize="18" />
                             <Label Text="{Binding Prenom}" FontSize="18" />
                         </StackLayout>
-
                         <Button Text="Supprimer" Clicked="Supprimer_Clicked" CommandParameter="{Binding .}" Grid.Column="1" />
+                        <Button Text="Lier à une activité" Clicked="LinkToActivity_Clicked" CommandParameter="{Binding .}" Grid.Column="2" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

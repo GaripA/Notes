@@ -6,11 +6,14 @@ namespace Notes.Views
 {
     public partial class AllTeachersPage : ContentPage
     {
+        private AllTeachers allTeachers;
+
         public AllTeachersPage()
         {
             InitializeComponent();
-            BindingContext = new AllTeachers();
-            
+            allTeachers = new AllTeachers();
+            BindingContext = allTeachers;
+
             // Attacher l'événement Appearing
             this.Appearing += AllTeachersPage_Appearing;
         }
@@ -18,7 +21,7 @@ namespace Notes.Views
         private void AllTeachersPage_Appearing(object sender, EventArgs e)
         {
             // Rechargez la liste des enseignants chaque fois que la page apparaît
-            ((AllTeachers)BindingContext).LoadTeachers();
+            allTeachers.LoadTeachers();
         }
 
         private async void AddTeacher_Clicked(object sender, EventArgs e)
@@ -27,15 +30,24 @@ namespace Notes.Views
             await Navigation.PushAsync(new TeacherPage());
         }
 
+        private async void LinkToActivity_Clicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is Teacher teacher)
+            {
+                // Naviguer vers la page ActivitiesForTeacher en passant l'ID du professeur
+                await Navigation.PushAsync(new ActivitiesForTeacher(teacher.TeacherId));
+            }
+        }
+
         private void Supprimer_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is Teacher teacher)
             {
                 // Supprimer l'enseignant de la liste
-                ((AllTeachers)BindingContext).Teachers.Remove(teacher);
+                allTeachers.Teachers.Remove(teacher);
 
                 // Enregistrer les enseignants dans le fichier
-                ((AllTeachers)BindingContext).SaveTeachers();
+                allTeachers.SaveTeachers();
             }
         }
     }
