@@ -11,10 +11,10 @@ namespace Notes.Views
         private int teacherId;
         private Activity selectedActivity;
 
-        public ActivitiesForTeacher(int teacherId)
+        public ActivitiesForTeacher()
         {
             InitializeComponent();
-            this.teacherId = teacherId;
+            
             allActivities = new AllActivities();
             allTeachers = new AllTeachers();
             BindingContext = allActivities;
@@ -24,10 +24,10 @@ namespace Notes.Views
         {
             base.OnAppearing();
 
-            // Load activities for the specific teacher every time the page appears
+           
             allActivities = new AllActivities();
             BindingContext = allActivities;
-            allActivities.LoadActivitiesForTeacher(teacherId);
+           
         }
 
         private async void OnSelectionButtonClicked(object sender, EventArgs e)
@@ -48,22 +48,16 @@ namespace Notes.Views
                     allTeachers.SaveTeachers();
                 }
 
-                // Debugging statement
-                Console.WriteLine("Before navigation");
-
-                // Try navigating directly to AllTeachersPage
-                await Shell.Current.GoToAsync(nameof(AllTeachersPage));
-
-                // Debugging statement
-                Console.WriteLine("After navigation");
+                // Revenir à la page précédente (AllTeachersPage)
+                await Navigation.PopAsync();
             }
         }
 
 
 
+
         private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Mettre à jour la propriété selectedActivity lors de la sélection d'un élément dans la collection
             if (e.CurrentSelection.FirstOrDefault() is Activity selected)
             {
                 selectedActivity = selected;

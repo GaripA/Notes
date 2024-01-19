@@ -18,16 +18,17 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <StackLayout Grid.Column="0" Orientation="Horizontal" Spacing="5">
                             <Label Text="{Binding Nom}" FontSize="18" />
                             <Label Text="{Binding Prenom}" FontSize="18" />
-                            <Label Text="{Binding AssociatedActivityId, StringFormat=' (Activité {0})'}" FontSize="16" TextColor="Gray" />
                         </StackLayout>
 
                         <Button Text="Supprimer" Clicked="Supprimer_Clicked" CommandParameter="{Binding .}" Grid.Column="1" />
                         <Button Text="Lier à une activité" Clicked="LinkToActivity_Clicked" CommandParameter="{Binding .}" Grid.Column="2" />
+                        <Button Text="Détails" Clicked="Details_Clicked" CommandParameter="{Binding .}" Grid.Column="3" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
