@@ -71,17 +71,6 @@ namespace Notes.Models
             SaveActivities();
         }
 
-        public void LoadActivitiesForTeacher(int teacherId)
-        {
-            // Filter activities based on the teacher's ID
-            var activitiesForTeacher = Activities.Where(a => a.ResponsibleTeacherId == teacherId).ToList();
-
-            // Clear and re-add filtered activities to the ObservableCollection
-            Activities.Clear();
-            foreach (var activity in activitiesForTeacher)
-            {
-                Activities.Add(activity);
-            }
-        }
+        
     }
 }

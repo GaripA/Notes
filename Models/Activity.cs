@@ -4,6 +4,6 @@
     {
         public int ActivityId { get; set; } // Ajout de cette propriété
         public string ActivityName { get; set; }
-        public int ResponsibleTeacherId { get; set; }
+        
     }
 }

@@ -5,6 +5,8 @@
         public int TeacherId { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
-        public int AssociatedActivityId { get; set; }
+
+        // Ajoutez la propriété AssociatedActivity
+        public string AssociatedActivity { get; set; }
     }
 }

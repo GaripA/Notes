@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿// AllTeachers.cs
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -47,5 +48,25 @@ namespace Notes.Models
             // Write the JSON content to the file
             File.WriteAllText(teacherFilePath, jsonContent);
         }
+
+        public void AssociateTeacherAndActivity(Teacher teacher, string activityName)
+        {
+            // Créez une nouvelle instance de Teacher avec les mêmes propriétés que l'enseignant passé en paramètre
+            var updatedTeacher = new Teacher
+            {
+                TeacherId = teacher.TeacherId,
+                Nom = teacher.Nom,
+                Prenom = teacher.Prenom,
+                AssociatedActivity = activityName
+            };
+
+            // Mettez à jour l'enseignant dans la collection
+            int index = Teachers.IndexOf(teacher);
+            Teachers[index] = updatedTeacher;
+
+            // Enregistrez les changements
+            SaveTeachers();
+        }
     }
 }
+

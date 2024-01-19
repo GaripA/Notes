@@ -5,6 +5,7 @@
              Title="All Teachers">
     <StackLayout>
         <Button Text="Add Teacher" Clicked="AddTeacher_Clicked" />
+
         <CollectionView x:Name="teachersCollection"
                         ItemsSource="{Binding Teachers}"
                         Margin="20">
@@ -27,11 +28,13 @@
                         </StackLayout>
 
                         <Button Text="Supprimer" Clicked="Supprimer_Clicked" CommandParameter="{Binding .}" Grid.Column="1" />
-                        <Button Text="Lier à une activité" Clicked="LinkToActivity_Clicked" CommandParameter="{Binding .}" Grid.Column="2" />
+                        <Button Text="Afficher" Clicked="Afficher_Clicked" CommandParameter="{Binding .}" Grid.Column="2" />
                         <Button Text="Détails" Clicked="Details_Clicked" CommandParameter="{Binding .}" Grid.Column="3" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Label x:Name="activitiesLabel" Text="" Margin="20"/>
     </StackLayout>
 </ContentPage>
