@@ -1,4 +1,5 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.AllTeachersPage"
              Title="All Teachers">
@@ -14,14 +15,17 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />    <!-- Pour le nom et prénom -->
-                            <ColumnDefinition Width="Auto" /> <!-- Pour le bouton "Supprimer" -->
-                            <ColumnDefinition Width="Auto" /> <!-- Pour le bouton "Lier à une activité" -->
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
+
                         <StackLayout Grid.Column="0" Orientation="Horizontal" Spacing="5">
                             <Label Text="{Binding Nom}" FontSize="18" />
                             <Label Text="{Binding Prenom}" FontSize="18" />
+                            <Label Text="{Binding AssociatedActivityId, StringFormat=' (Activité {0})'}" FontSize="16" TextColor="Gray" />
                         </StackLayout>
+
                         <Button Text="Supprimer" Clicked="Supprimer_Clicked" CommandParameter="{Binding .}" Grid.Column="1" />
                         <Button Text="Lier à une activité" Clicked="LinkToActivity_Clicked" CommandParameter="{Binding .}" Grid.Column="2" />
                     </Grid>

@@ -1,5 +1,4 @@
-﻿// AllTeachers.cs
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -48,7 +47,5 @@ namespace Notes.Models
             // Write the JSON content to the file
             File.WriteAllText(teacherFilePath, jsonContent);
         }
-
-        // Add other methods as needed for managing teachers
     }
 }

@@ -2,7 +2,8 @@
 {
     internal class Activity
     {
+        public int ActivityId { get; set; } // Ajout de cette propriété
         public string ActivityName { get; set; }
-        public int ResponsibleTeacherId { get; set; } // Ajout de cette propriété
+        public int ResponsibleTeacherId { get; set; }
     }
 }
