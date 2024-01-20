@@ -1,31 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Downloads\\maui-samples-main\\maui-samples-main\\8.0\\Tutorials\\CreateNetMauiApp\\Notes\\Notes.csproj": {}
+    "/Users/nabilhajchaib/Desktop/MAUIproject/Notes/Notes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Downloads\\maui-samples-main\\maui-samples-main\\8.0\\Tutorials\\CreateNetMauiApp\\Notes\\Notes.csproj": {
+    "/Users/nabilhajchaib/Desktop/MAUIproject/Notes/Notes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Downloads\\maui-samples-main\\maui-samples-main\\8.0\\Tutorials\\CreateNetMauiApp\\Notes\\Notes.csproj",
+        "projectUniqueName": "/Users/nabilhajchaib/Desktop/MAUIproject/Notes/Notes.csproj",
         "projectName": "Notes",
-        "projectPath": "C:\\Users\\PC\\Downloads\\maui-samples-main\\maui-samples-main\\8.0\\Tutorials\\CreateNetMauiApp\\Notes\\Notes.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Downloads\\maui-samples-main\\maui-samples-main\\8.0\\Tutorials\\CreateNetMauiApp\\Notes\\obj\\",
+        "projectPath": "/Users/nabilhajchaib/Desktop/MAUIproject/Notes/Notes.csproj",
+        "packagesPath": "/Users/nabilhajchaib/.nuget/packages/",
+        "outputPath": "/Users/nabilhajchaib/Desktop/MAUIproject/Notes/obj/",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/nabilhajchaib/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows10.0.19041.0"
+          "net8.0-maccatalyst"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows10.0.19041": {
-            "targetAlias": "net8.0-windows10.0.19041.0",
+          "net8.0-maccatalyst17.0": {
+            "targetAlias": "net8.0-maccatalyst",
             "projectReferences": {}
           }
         },
@@ -36,8 +37,8 @@
         }
       },
       "frameworks": {
-        "net8.0-windows10.0.19041": {
-          "targetAlias": "net8.0-windows10.0.19041.0",
+        "net8.0-maccatalyst17.0": {
+          "targetAlias": "net8.0-maccatalyst",
           "dependencies": {
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -50,9 +51,16 @@
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
               "version": "[8.0.3, )"
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
+            "xamarinios10",
             "net461",
             "net462",
             "net47",
@@ -63,25 +71,19 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.19041.31, 10.0.19041.31]"
-            }
-          ],
           "frameworkReferences": {
-            "Microsoft.NETCore.App": {
+            "Microsoft.MacCatalyst": {
               "privateAssets": "all"
             },
-            "Microsoft.Windows.SDK.NET.Ref": {
+            "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
-        "win10-x64": {
+        "maccatalyst-arm64": {
           "#import": []
         }
       }

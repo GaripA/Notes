@@ -9,15 +9,15 @@ namespace Notes.Views
     public partial class AllStudentsPage : ContentPage
     {
         private AllStudents allStudents;
-        private AllCurses allCurses;
+        private AllCourses allCourses;
         private Student selectedStudent;
-        private string selectedCurse;
+        private string selectedCourse;
 
         public AllStudentsPage()
         {
             InitializeComponent();
             allStudents = new AllStudents();
-            allCurses = new AllCurses();
+            allCourses = new AllCourses();
             BindingContext = allStudents;
         }
 
@@ -26,19 +26,19 @@ namespace Notes.Views
             base.OnAppearing();
 
             // Recharger les données des cours
-            allCurses = new AllCurses();
+            allCourses = new AllCourses();
         }
 
         private async void DisplayStudentAssociatedCoursesForEvaluation()
         {
             // Filtrer les cours uniquement pour ceux auxquels l'étudiant est associé
-            List<Curse> associatedCurses = allCurses.Curses
-                .Where(c => selectedStudent.AssociatedCourses.Contains(c.CurseName))
+            List<Course> associatedCourses = allCourses.Courses
+                .Where(c => selectedStudent.AssociatedCourses.Contains(c.CourseName))
                 .ToList();
 
-            selectedCurse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, associatedCurses.Select(c => c.CurseName).ToArray());
+            selectedCourse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, associatedCourses.Select(c => c.CourseName).ToArray());
 
-            if (!string.IsNullOrEmpty(selectedCurse))
+            if (!string.IsNullOrEmpty(selectedCourse))
             {
                 // Appeler la méthode pour ajouter une évaluation pour l'étudiant et le cours sélectionnés
                 NavigateToAddEvalPage();
@@ -47,9 +47,9 @@ namespace Notes.Views
 
         private void NavigateToAddEvalPage()
         {
-            if (selectedStudent != null && !string.IsNullOrEmpty(selectedCurse))
+            if (selectedStudent != null && !string.IsNullOrEmpty(selectedCourse))
             {
-                Navigation.PushAsync(new AddEvalPage(allStudents, selectedStudent, selectedCurse));
+                Navigation.PushAsync(new AddEvalPage(allStudents, selectedStudent, selectedCourse));
             }
         }
 
@@ -101,15 +101,15 @@ namespace Notes.Views
         private async void DisplayStudentCourses()
         {
             // Récupérer tous les cours disponibles
-            List<Curse> allCursesList = allCurses.Curses.ToList();
+            List<Course> allCoursesList = allCourses.Courses.ToList();
 
             // Afficher une liste des cours pour que l'utilisateur en sélectionne un
-            string selectedCurse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, allCursesList.Select(c => c.CurseName).ToArray());
+            string selectedCourse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, allCoursesList.Select(c => c.CourseName).ToArray());
 
-            if (!string.IsNullOrEmpty(selectedCurse))
+            if (!string.IsNullOrEmpty(selectedCourse))
             {
                 // Associer l'étudiant sélectionné au cours choisi
-                allStudents.AssociateStudentAndCurse(selectedStudent, selectedCurse);
+                allStudents.AssociateStudentAndCourse(selectedStudent, selectedCourse);
 
                 // Mise à jour de l'interface utilisateur pour refléter l'association
                 UpdateUI();
@@ -119,7 +119,7 @@ namespace Notes.Views
         private async void AddStudent_Clicked(object sender, EventArgs e)
         {
             // Naviguer vers la page StudentPage
-            Navigation.PushAsync(new StudentPage());
+            await Navigation.PushAsync(new StudentPage());
         }
 
         private void Supprimer_Clicked(object sender, EventArgs e)

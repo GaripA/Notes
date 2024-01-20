@@ -6,8 +6,8 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
         Routing.RegisterRoute(nameof(Views.AddEvalPage), typeof(Views.AddEvalPage));
-        Routing.RegisterRoute(nameof(Views.AllCursesPage), typeof(Views.AllCursesPage));
-        Routing.RegisterRoute(nameof(Views.CursePage), typeof(Views.CursePage));
+        Routing.RegisterRoute(nameof(Views.AllCoursesPage), typeof(Views.AllCoursesPage));
+        Routing.RegisterRoute(nameof(Views.CoursePage), typeof(Views.CoursePage));
         Routing.RegisterRoute(nameof(Views.AllTeachersPage), typeof(Views.AllTeachersPage));
         Routing.RegisterRoute(nameof(Views.ActivityPage), typeof(Views.ActivityPage));
         Routing.RegisterRoute(nameof(Views.AllActivitiesPage), typeof(Views.AllActivitiesPage));

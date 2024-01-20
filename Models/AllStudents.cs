@@ -1,9 +1,5 @@
-﻿// AllStudents.cs
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 
 namespace Notes.Models
@@ -17,15 +13,16 @@ namespace Notes.Models
             Students = LoadStudents() ?? new ObservableCollection<Student>();
         }
 
-        private string GetFilePath()
+        private string GetStudentsFilePath()
         {
+            // Crée et retourne le chemin du fichier pour les étudiants
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             return Path.Combine(folderPath, "students.json");
         }
 
         public ObservableCollection<Student> LoadStudents()
         {
-            string filePath = GetFilePath();
+            string filePath = GetStudentsFilePath();
 
             try
             {
@@ -55,7 +52,7 @@ namespace Notes.Models
 
         public void SaveStudents()
         {
-            string filePath = GetFilePath();
+            string filePath = GetStudentsFilePath();
             string json = JsonSerializer.Serialize(Students);
 
             try
@@ -68,9 +65,9 @@ namespace Notes.Models
             }
         }
 
-        public void AssociateStudentAndCurse(Student student, string curseName)
+        public void AssociateStudentAndCourse(Student student, string courseName)
         {
-            student.AssociatedCourses.Add(curseName);
+            student.AssociatedCourses.Add(courseName);
             SaveStudents();
         }
 

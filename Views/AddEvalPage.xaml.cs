@@ -8,14 +8,14 @@ namespace Notes.Views
     {
         private AllStudents allStudents;
         private Student selectedStudent;
-        private string selectedCurse;
+        private string selectedCourse;
 
-        public AddEvalPage(AllStudents allStudents, Student selectedStudent, string selectedCurse)
+        public AddEvalPage(AllStudents allStudents, Student selectedStudent, string selectedCourse)
         {
             InitializeComponent();
             this.allStudents = allStudents;
             this.selectedStudent = selectedStudent;
-            this.selectedCurse = selectedCurse;
+            this.selectedCourse = selectedCourse;
         }
 
         private void Enregistrer_Clicked(object sender, EventArgs e)
@@ -23,13 +23,13 @@ namespace Notes.Views
             string evaluation = evaluationEntry.Text;
 
             // Enregistrez l'évaluation pour l'étudiant et le cours sélectionnés
-            AddStudentEvaluation(selectedStudent, selectedCurse, evaluation);
+            AddStudentEvaluation(selectedStudent, selectedCourse, evaluation);
 
             // Retournez à la page AllStudentsPage
             Navigation.PopAsync();
         }
 
-        private void AddStudentEvaluation(Student student, string selectedCurse, string evaluation)
+        private void AddStudentEvaluation(Student student, string selectedCourse, string evaluation)
         {
             // Implémenter la logique pour ajouter une évaluation pour l'étudiant dans le cours sélectionné
             // Vous pouvez utiliser une nouvelle propriété ou une structure de données pour stocker les évaluations par cours
@@ -37,7 +37,7 @@ namespace Notes.Views
             // Ensuite, vous mettez à jour cette structure de données et rafraîchissez l'interface utilisateur.
 
             // Exemple simplifié :
-            student.Evaluation = $"{selectedCurse}: {evaluation}";
+            student.Evaluation = $"{selectedCourse}: {evaluation}";
 
             // Enregistrez les changements
             allStudents.SaveStudents();

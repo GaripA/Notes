@@ -1,7 +1,5 @@
-﻿// AllTeachers.cs
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 
 namespace Notes.Models
@@ -15,13 +13,19 @@ namespace Notes.Models
             LoadTeachers();
         }
 
+        private string GetTeachersFilePath()
+        {
+            // Crée et retourne le chemin du fichier pour les enseignants
+            string appDataPath = FileSystem.AppDataDirectory;
+            return Path.Combine(appDataPath, "teacher.txt");
+        }
+
         public void LoadTeachers()
         {
             Teachers.Clear();
 
-            // Get the folder where the teachers are stored.
-            string appDataPath = FileSystem.AppDataDirectory;
-            string teacherFilePath = Path.Combine(appDataPath, "teacher.txt");
+            // Get the file path for teachers
+            string teacherFilePath = GetTeachersFilePath();
 
             // Check if the file exists
             if (File.Exists(teacherFilePath))
@@ -38,9 +42,8 @@ namespace Notes.Models
 
         public void SaveTeachers()
         {
-            // Get the folder where the teachers will be stored.
-            string appDataPath = FileSystem.AppDataDirectory;
-            string teacherFilePath = Path.Combine(appDataPath, "teacher.txt");
+            // Get the file path for teachers
+            string teacherFilePath = GetTeachersFilePath();
 
             // Serialize the ObservableCollection of teachers to JSON
             string jsonContent = JsonSerializer.Serialize(Teachers);
