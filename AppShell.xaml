@@ -12,6 +12,10 @@
             ContentTemplate="{DataTemplate views:AllCursesPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         <ShellContent
+            Title="Statistiques"
+            ContentTemplate="{DataTemplate views:StudentStat}"
+            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+        <ShellContent
             Title="Teacher"
             ContentTemplate="{DataTemplate views:AllTeachersPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />

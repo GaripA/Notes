@@ -90,6 +90,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Notes.Views.StudentPage.xa
 build_metadata.AdditionalFiles.TargetPath = Views\StudentPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\StudentPage.xaml
 
+[C:/Users/PC/Downloads/maui-samples-main/maui-samples-main/8.0/Tutorials/CreateNetMauiApp/Notes/Views/StudentStat.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Notes.Views.StudentStat.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\StudentStat.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\StudentStat.xaml
+
 [C:/Users/PC/Downloads/maui-samples-main/maui-samples-main/8.0/Tutorials/CreateNetMauiApp/Notes/Views/TeacherPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Notes.Views.TeacherPage.xaml

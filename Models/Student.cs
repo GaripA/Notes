@@ -1,4 +1,5 @@
-﻿// Student.cs
+﻿using System.Collections.ObjectModel;
+
 namespace Notes.Models
 {
     public class Student
@@ -7,7 +8,12 @@ namespace Notes.Models
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Classe { get; set; }
-        public List<string> AssociatedCourses { get; set; } = new List<string>();
-        public string Evaluation { get; set; }
+        public ObservableCollection<Association> AssociatedCourses { get; set; } = new ObservableCollection<Association>();
+    }
+
+    public class Association
+    {
+        public string CourseName { get; set; }
+        public ObservableCollection<string> Evaluations { get; set; } = new ObservableCollection<string>();
     }
 }
