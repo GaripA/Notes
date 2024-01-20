@@ -41,25 +41,25 @@ namespace Notes.Views
             if (!string.IsNullOrEmpty(selectedCurse))
             {
                 // Appeler la méthode pour ajouter une évaluation pour l'étudiant et le cours sélectionnés
-                AddStudentEvaluation(selectedStudent, selectedCurse);
+                NavigateToAddEvalPage();
             }
         }
 
-        private void AddStudentEvaluation(Student student, string selectedCurse)
+        private void NavigateToAddEvalPage()
         {
-            // Implémenter la logique pour ajouter une évaluation pour l'étudiant dans le cours sélectionné
-            // Vous pouvez utiliser une nouvelle propriété ou une structure de données pour stocker les évaluations par cours
-            // Par exemple, vous pourriez avoir une classe Evaluation associant un étudiant, un cours et la note.
-            // Ensuite, vous mettez à jour cette structure de données et rafraîchissez l'interface utilisateur.
+            if (selectedStudent != null && !string.IsNullOrEmpty(selectedCurse))
+            {
+                Navigation.PushAsync(new AddEvalPage(allStudents, selectedStudent, selectedCurse));
+            }
+        }
 
-            // Exemple simplifié :
-            student.Evaluation = $"{selectedCurse}: En attente d'évaluation";
-
-            // Enregistrez les changements
-            allStudents.SaveStudents();
-
-            // Mise à jour de l'interface utilisateur
-            UpdateUI();
+        private void AddEvaluation_Clicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is Student student)
+            {
+                selectedStudent = student;
+                DisplayStudentAssociatedCoursesForEvaluation();
+            }
         }
 
         private void UpdateUI()
@@ -133,15 +133,5 @@ namespace Notes.Views
                 allStudents.SaveStudents();
             }
         }
-
-        private void AddEvaluation_Clicked(object sender, EventArgs e)
-        {
-            if (sender is Button button && button.CommandParameter is Student student)
-            {
-                selectedStudent = student;
-                Navigation.PushAsync(new AddEvalPage(allStudents, selectedStudent, selectedCurse));
-            }
-        }
-
     }
 }
