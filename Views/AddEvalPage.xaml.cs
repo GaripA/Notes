@@ -1,7 +1,6 @@
 ﻿using Microsoft.Maui.Controls;
 using Notes.Models;
 using System;
-using System.Collections.Generic;
 
 namespace Notes.Views
 {
@@ -21,59 +20,24 @@ namespace Notes.Views
 
         private void Enregistrer_Clicked(object sender, EventArgs e)
         {
-            string evaluationInput = evaluationEntry.Text;
+            string evaluation = evaluationEntry.Text;
 
-            // Try to convert to numeric value, treat as letter grade if unsuccessful
-            if (TryConvertToNumeric(evaluationInput, out double evaluationNumeric))
-            {
-                // Successfully converted to numeric value
-                AddStudentEvaluation(selectedStudent, selectedCurse, evaluationNumeric);
-            }
-            else
-            {
-                // Unable to convert to numeric value, treat it as a letter grade
-                AddStudentEvaluation(selectedStudent, selectedCurse, evaluationInput);
-            }
+            // Enregistrez l'évaluation pour l'étudiant et le cours sélectionnés
+            AddStudentEvaluation(selectedStudent, selectedCurse, evaluation);
 
             // Retournez à la page AllStudentsPage
             Navigation.PopAsync();
         }
 
-        private bool TryConvertToNumeric(string input, out double numericValue)
+        private void AddStudentEvaluation(Student student, string selectedCurse, string evaluation)
         {
-            // Mapping of letter grades to numeric values
-            var gradeMappings = new Dictionary<string, double>
-            {
-                { "N", 4 },
-                { "C", 8 },
-                { "B", 12 },
-                { "TB",16 },
-                { "X",20 }
-            };
+            // Implémenter la logique pour ajouter une évaluation pour l'étudiant dans le cours sélectionné
+            // Vous pouvez utiliser une nouvelle propriété ou une structure de données pour stocker les évaluations par cours
+            // Par exemple, vous pourriez avoir une classe Evaluation associant un étudiant, un cours et la note.
+            // Ensuite, vous mettez à jour cette structure de données et rafraîchissez l'interface utilisateur.
 
-            if (gradeMappings.TryGetValue(input.ToUpper(), out numericValue))
-            {
-                return true;
-            }
-
-            // Try parsing as a numeric value
-            return double.TryParse(input, out numericValue);
-        }
-
-        private void AddStudentEvaluation(Student student, string selectedCurse, object evaluation)
-        {
-            // Recherche de l'association pour le cours sélectionné
-            var association = student.AssociatedCourses.FirstOrDefault(a => a.CourseName == selectedCurse);
-
-            if (association == null)
-            {
-                // Si l'association n'existe pas, la créer
-                association = new Association { CourseName = selectedCurse };
-                student.AssociatedCourses.Add(association);
-            }
-
-            // Ajout de l'évaluation à la liste des évaluations pour le cours
-            association.Evaluations.Add(evaluation.ToString());
+            // Exemple simplifié :
+            student.Evaluation = $"{selectedCurse}: {evaluation}";
 
             // Enregistrez les changements
             allStudents.SaveStudents();

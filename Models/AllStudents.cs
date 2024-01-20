@@ -1,5 +1,6 @@
-﻿// AllStudents.cs
+// AllStudents.cs
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Notes.Models
                     {
                         if (student.AssociatedCourses == null)
                         {
-                            student.AssociatedCourses = new ObservableCollection<Association>();
+                            student.AssociatedCourses = new List<string>();
                         }
                     }
 
@@ -67,28 +68,16 @@ namespace Notes.Models
             }
         }
 
-        public void AssociateStudentAndCourse(Student student, string courseName)
+        public void AssociateStudentAndCurse(Student student, string curseName)
         {
-            var association = student.AssociatedCourses.FirstOrDefault(a => a.CourseName == courseName);
-
-            if (association == null)
-            {
-                association = new Association { CourseName = courseName };
-                student.AssociatedCourses.Add(association);
-            }
-
+            student.AssociatedCourses.Add(curseName);
             SaveStudents();
         }
 
-        public void AddEvaluation(Student student, string courseName, string evaluation)
+        public void AddEvaluation(Student student, string evaluation)
         {
-            var association = student.AssociatedCourses.FirstOrDefault(a => a.CourseName == courseName);
-
-            if (association != null)
-            {
-                association.Evaluations.Add(evaluation);
-                SaveStudents();
-            }
+            student.Evaluation = evaluation;
+            SaveStudents();
         }
     }
 }

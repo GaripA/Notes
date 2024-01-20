@@ -11,7 +11,7 @@ namespace Notes.Views
         private AllStudents allStudents;
         private AllCurses allCurses;
         private Student selectedStudent;
-        private string selectedCourse;
+        private string selectedCurse;
 
         public AllStudentsPage()
         {
@@ -29,16 +29,27 @@ namespace Notes.Views
             allCurses = new AllCurses();
         }
 
-
         private async void DisplayStudentAssociatedCoursesForEvaluation()
         {
-            List<string> associatedCourses = selectedStudent.AssociatedCourses.Select(a => a.CourseName).ToList();
+            // Filtrer les cours uniquement pour ceux auxquels l'étudiant est associé
+            List<Curse> associatedCurses = allCurses.Curses
+                .Where(c => selectedStudent.AssociatedCourses.Contains(c.CurseName))
+                .ToList();
 
-            selectedCourse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, associatedCourses.ToArray());
+            selectedCurse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, associatedCurses.Select(c => c.CurseName).ToArray());
 
-            if (!string.IsNullOrEmpty(selectedCourse))
+            if (!string.IsNullOrEmpty(selectedCurse))
             {
+                // Appeler la méthode pour ajouter une évaluation pour l'étudiant et le cours sélectionnés
                 NavigateToAddEvalPage();
+            }
+        }
+
+        private void NavigateToAddEvalPage()
+        {
+            if (selectedStudent != null && !string.IsNullOrEmpty(selectedCurse))
+            {
+                Navigation.PushAsync(new AddEvalPage(allStudents, selectedStudent, selectedCurse));
             }
         }
 
@@ -51,13 +62,6 @@ namespace Notes.Views
             }
         }
 
-        private void NavigateToAddEvalPage()
-        {
-            if (selectedStudent != null && !string.IsNullOrEmpty(selectedCourse))
-            {
-                Navigation.PushAsync(new AddEvalPage(allStudents, selectedStudent, selectedCourse));
-            }
-        }
         private void UpdateUI()
         {
             // Rafraîchir l'affichage des étudiants
@@ -69,6 +73,7 @@ namespace Notes.Views
 
             selectedStudent = null;
         }
+
         private async void Details_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is Student student)
@@ -80,63 +85,10 @@ namespace Notes.Views
 
         private string GetMultipleAssociationDetails(Student student)
         {
-            string details = $"Nom: {student.Nom}\nPrenom: {student.Prenom}\nClasse: {student.Classe}\n";
-
-            foreach (var association in student.AssociatedCourses)
-            {
-                details += $"\nCours: {association.CourseName}\nÉvaluations: {string.Join(", ", association.Evaluations)}";
-
-                if (association.Evaluations.Any())
-                {
-                    // Calculate and display the average for the specific course
-                    double averageForCourse = association.Evaluations.Select(double.Parse).Average();
-                    details += $"\nMoyenne pour le cours: {averageForCourse:F2}\n";
-                }
-            }
-
-            if (student.AssociatedCourses.Any())
-            {
-                // Calculate and display the overall average for the student
-                double overallAverage = student.AssociatedCourses
-                    .SelectMany(a => a.Evaluations.Select(double.Parse))
-                    .DefaultIfEmpty(0.0)
-                    .Average();
-
-                details += $"\nMoyenne générale: {overallAverage:F2}\n";
-            }
-
-            return details;
+            string courses = string.Join(", ", student.AssociatedCourses);
+            return $"Nom: {student.Nom}\nPrenom: {student.Prenom}\nCours associés: {courses}\nÉvaluation: {student.Evaluation}";
         }
 
-
-        private async void DisplayStudentCourses()
-        {
-            List<Curse> allCursesList = allCurses.Curses.ToList();
-
-            string selectedCourse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, allCursesList.Select(c => c.CurseName).ToArray());
-
-            if (!string.IsNullOrEmpty(selectedCourse))
-            {
-                allStudents.AssociateStudentAndCourse(selectedStudent, selectedCourse);
-                UpdateUI();
-            }
-        }
-
-        private void Supprimer_Clicked(object sender, EventArgs e)
-        {
-            if (sender is Button button && button.CommandParameter is Student student)
-            {
-                allStudents.Students.Remove(student);
-
-                
-                allStudents.SaveStudents();
-            }
-        }
-        private async void AddStudent_Clicked(object sender, EventArgs e)
-        {
-            // Naviguer vers la page StudentPage
-            Navigation.PushAsync(new StudentPage());
-        }
         private void AfficherCours_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is Student student)
@@ -145,9 +97,41 @@ namespace Notes.Views
                 DisplayStudentCourses();
             }
         }
-       
-    }
-    
-    }
 
+        private async void DisplayStudentCourses()
+        {
+            // Récupérer tous les cours disponibles
+            List<Curse> allCursesList = allCurses.Curses.ToList();
 
+            // Afficher une liste des cours pour que l'utilisateur en sélectionne un
+            string selectedCurse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, allCursesList.Select(c => c.CurseName).ToArray());
+
+            if (!string.IsNullOrEmpty(selectedCurse))
+            {
+                // Associer l'étudiant sélectionné au cours choisi
+                allStudents.AssociateStudentAndCurse(selectedStudent, selectedCurse);
+
+                // Mise à jour de l'interface utilisateur pour refléter l'association
+                UpdateUI();
+            }
+        }
+
+        private async void AddStudent_Clicked(object sender, EventArgs e)
+        {
+            // Naviguer vers la page StudentPage
+            Navigation.PushAsync(new StudentPage());
+        }
+
+        private void Supprimer_Clicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is Student student)
+            {
+                // Supprimer l'étudiant de la liste
+                allStudents.Students.Remove(student);
+
+                // Enregistrer les étudiants dans le fichier
+                allStudents.SaveStudents();
+            }
+        }
+    }
+}
