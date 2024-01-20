@@ -22,7 +22,13 @@ namespace Notes.Views
             allActivities = new AllActivities();
             BindingContext = allTeachers;
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
+            // Recharger les données des cours
+            allActivities = new AllActivities();
+        }
         private void Afficher_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is Teacher teacher)

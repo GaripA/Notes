@@ -1,6 +1,9 @@
-﻿using System;
+﻿// AllStudents.cs
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace Notes.Models
@@ -11,7 +14,6 @@ namespace Notes.Models
 
         public AllStudents()
         {
-            // Charge les étudiants existants ou crée une nouvelle collection
             Students = LoadStudents() ?? new ObservableCollection<Student>();
         }
 
@@ -21,7 +23,7 @@ namespace Notes.Models
             return Path.Combine(folderPath, "students.json");
         }
 
-        private ObservableCollection<Student> LoadStudents()
+        public ObservableCollection<Student> LoadStudents()
         {
             string filePath = GetFilePath();
 
@@ -30,7 +32,17 @@ namespace Notes.Models
                 if (File.Exists(filePath))
                 {
                     string json = File.ReadAllText(filePath);
-                    return JsonSerializer.Deserialize<ObservableCollection<Student>>(json);
+                    var loadedStudents = JsonSerializer.Deserialize<ObservableCollection<Student>>(json);
+
+                    foreach (var student in loadedStudents)
+                    {
+                        if (student.AssociatedCourses == null)
+                        {
+                            student.AssociatedCourses = new List<string>();
+                        }
+                    }
+
+                    return loadedStudents;
                 }
             }
             catch (Exception ex)
@@ -48,7 +60,6 @@ namespace Notes.Models
 
             try
             {
-                // Crée le fichier s'il n'existe pas
                 File.WriteAllText(filePath, json);
             }
             catch (Exception ex)
@@ -56,10 +67,17 @@ namespace Notes.Models
                 Console.WriteLine($"Erreur lors de l'écriture dans le fichier : {ex}");
             }
         }
-        public List<int> GetStudentIds()
+
+        public void AssociateStudentAndCurse(Student student, string curseName)
         {
-            // Retourne une liste d'identifiants uniques pour les étudiants
-            return Students.Select(student => student.Id).ToList();
-        }   
+            student.AssociatedCourses.Add(curseName);
+            SaveStudents();
+        }
+
+        public void AddEvaluation(Student student, string evaluation)
+        {
+            student.Evaluation = evaluation;
+            SaveStudents();
+        }
     }
 }
