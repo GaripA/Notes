@@ -30,7 +30,7 @@ namespace Notes.Views
                 .ToList();
 
             // Créer un texte formaté pour afficher les statistiques dans le Label
-            string statisticsText = string.Join("\n", classStatistics.Select(stat => $"Class {stat.Classe}: {stat.StudentCount} étudiants"));
+            string statisticsText = string.Join("\n", classStatistics.Select(stat => $"Classe {stat.Classe}: {stat.StudentCount} étudiants"));
 
             // Mettre à jour le texte du Label avec les statistiques
             ClassStatisticsLabel.Text = statisticsText;

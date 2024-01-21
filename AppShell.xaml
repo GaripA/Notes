@@ -16,16 +16,16 @@
             ContentTemplate="{DataTemplate views:StudentStat}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         <ShellContent
-            Title="Teacher"
+            Title="Enseignants"
             ContentTemplate="{DataTemplate views:AllTeachersPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         
         <ShellContent
-            Title="All Activities"
+            Title="Les Activités"
             ContentTemplate="{DataTemplate views:AllActivitiesPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         <ShellContent
-            Title="Student"
+            Title="Les étudiants"
             ContentTemplate="{DataTemplate views:AllStudentsPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         

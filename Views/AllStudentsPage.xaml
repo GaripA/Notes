@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.AllStudentsPage"
-             Title="All Students">
+             Title="Liste des étudiants">
 
     <StackLayout>
-        <Button Text="Add Student" Clicked="AddStudent_Clicked" />
+        <Button Text="Ajouter un étudiant" Clicked="AddStudent_Clicked" />
 
         <CollectionView x:Name="studentsCollection"
                         ItemsSource="{Binding Students}"
@@ -33,9 +33,9 @@
                         </StackLayout>
 
                         <Button Text="Supprimer" Clicked="Supprimer_Clicked" CommandParameter="{Binding .}" Grid.Column="1" />
-                        <Button Text="Ajouter un Cours" Clicked="AfficherCours_Clicked" CommandParameter="{Binding .}" Grid.Column="2" />
-                        <Button Text="Ajouter une évaluation" Clicked="AddEvaluation_Clicked" CommandParameter="{Binding .}" Grid.Column="3" />
-                        <Button Text="Détails" Clicked="Details_Clicked" CommandParameter="{Binding .}" Grid.Column="4" />
+                        <Button Text="inscrire à un cours" Clicked="AfficherCours_Clicked" CommandParameter="{Binding .}" Grid.Column="2" />
+                        <Button Text="Ajouter une évaluation pour un cours" Clicked="AddEvaluation_Clicked" CommandParameter="{Binding .}" Grid.Column="3" />
+                        <Button Text="Afficher le bulletin" Clicked="Details_Clicked" CommandParameter="{Binding .}" Grid.Column="4" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IPlqR5ZGS4FPMOBvvUgiT3l/9ii2rUWToKzm2GN9KoBIoUig6BBZJsNcForeNxkGjSoYqQnP/6iDH9gi8LZvZg==",
+  "dgSpecHash": "Mqao9UxvMyFpykffymtMOmfyzzOPwrFZ9nlf9MV/rAxQN7G1HqoKCWT8RHPVX49KApfeTNv04airny/LqVDRDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\Downloads\\maui-samples-main\\maui-samples-main\\8.0\\Tutorials\\CreateNetMauiApp\\Notes\\Notes.csproj",
+  "projectFilePath": "C:\\Users\\PC\\Desktop\\Notes\\Notes\\Notes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
