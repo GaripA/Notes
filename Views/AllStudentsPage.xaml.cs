@@ -135,7 +135,7 @@ namespace Notes.Views
         private async void AddStudent_Clicked(object sender, EventArgs e)
         {
             // Naviguer vers la page StudentPage
-            Navigation.PushAsync(new StudentPage());
+            await Navigation.PushAsync(new StudentPage());
         }
         private void AfficherCours_Clicked(object sender, EventArgs e)
         {
