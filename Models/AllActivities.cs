@@ -56,16 +56,6 @@ namespace Notes.Models
             }
         }
 
-        public void AddActivity(Activity activity)
-        {
-            Activities.Add(activity);
-            SaveActivities();
-        }
-
-        public void RemoveActivity(Activity activity)
-        {
-            Activities.Remove(activity);
-            SaveActivities();
-        }
+       
     }
 }

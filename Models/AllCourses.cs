@@ -56,16 +56,6 @@ namespace Notes.Models
             }
         }
 
-        public void AddCourse(Course course)
-        {
-            Courses.Add(course);
-            SaveCourses();
-        }
-
-        public void RemoveCourse(Course course)
-        {
-            Courses.Remove(course);
-            SaveCourses();
-        }
+      
     }
 }

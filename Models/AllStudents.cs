@@ -80,15 +80,6 @@ namespace Notes.Models
             SaveStudents();
         }
 
-        public void AddEvaluation(Student student, string courseName, string evaluation)
-        {
-            var association = student.AssociatedCourses.FirstOrDefault(a => a.CourseName == courseName);
-
-            if (association != null)
-            {
-                association.Evaluations.Add(evaluation);
-                SaveStudents();
-            }
-        }
+       
     }
 }
