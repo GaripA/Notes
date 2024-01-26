@@ -7,13 +7,13 @@ using System.Text.Json;
 
 namespace Notes.Models
 {
-    public class AllStudents
+    public class AllStudents : ILoad<Student>, ISave
     {
         public ObservableCollection<Student> Students { get; set; }
 
         public AllStudents()
         {
-            Students = LoadStudents() ?? new ObservableCollection<Student>();
+            Students = Load() ?? new ObservableCollection<Student>();
         }
 
         private string GetFilePath()
@@ -22,7 +22,7 @@ namespace Notes.Models
             return Path.Combine(folderPath, "students.json");
         }
 
-        public ObservableCollection<Student> LoadStudents()
+        public ObservableCollection<Student> Load()
         {
             string filePath = GetFilePath();
 
@@ -52,7 +52,7 @@ namespace Notes.Models
             return null;
         }
 
-        public void SaveStudents()
+        public void Save()
         {
             string filePath = GetFilePath();
             string json = JsonSerializer.Serialize(Students);
@@ -77,7 +77,7 @@ namespace Notes.Models
                 student.AssociatedCourses.Add(association);
             }
 
-            SaveStudents();
+            Save();
         }
 
        

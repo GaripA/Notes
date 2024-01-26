@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls;
 
 namespace Notes.Views
 {
-    public partial class TeacherPage : ContentPage
+    public partial class TeacherPage : ContentPage,IEnregistrer
     {
         private AllTeachers allTeachers;
 
@@ -16,7 +16,7 @@ namespace Notes.Views
             BindingContext = allTeachers;
         }
 
-        private async void Enregistrer_Clicked(object sender, EventArgs e)
+        public async void Enregistrer_Clicked(object sender, EventArgs e)
         {
             // Récupérer le nom et le prénom depuis les champs de saisie
             string nom = txtNom.Text;
@@ -44,7 +44,7 @@ namespace Notes.Views
             txtPrenom.Text = string.Empty;
 
             // Enregistrer les enseignants dans le fichier
-            allTeachers.SaveTeachers();
+            allTeachers.Save();
 
             // Naviguer vers la page AllTeachersPage
             await Shell.Current.GoToAsync(nameof(AllTeachersPage));

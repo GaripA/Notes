@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls;
 
 namespace Notes.Views
 {
-    public partial class ActivityPage : ContentPage
+    public partial class ActivityPage : ContentPage, IEnregistrer
     {
         private AllActivities allActivities;
 
@@ -16,7 +16,7 @@ namespace Notes.Views
             BindingContext = allActivities;
         }
 
-        private async void Enregistrer_Clicked(object sender, EventArgs e)
+        public async void Enregistrer_Clicked(object sender, EventArgs e)
         {
             // Récupérer le nom de l'activité depuis le champ de saisie
             string activityName = txtActivityName.Text;
@@ -41,7 +41,7 @@ namespace Notes.Views
             txtActivityName.Text = string.Empty;
 
             // Enregistrer les activités dans le fichier
-            allActivities.SaveActivities();
+            allActivities.Save();
 
             // Revenir à la page précédente (AllActivitiesPage)
             await Navigation.PopAsync();

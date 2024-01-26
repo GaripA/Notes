@@ -39,7 +39,7 @@ namespace Notes.Views
                 allActivities.Activities.Remove(activity);
 
                 // Save activities to the file
-                allActivities.SaveActivities();
+                allActivities.Save();
             }
         }
     }

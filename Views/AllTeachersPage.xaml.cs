@@ -47,7 +47,7 @@ namespace Notes.Views
             List<Activity> allActivitiesList = allActivities.Activities.ToList();
 
             // Affichez une liste des activités pour que l'utilisateur en sélectionne une
-            string selectedActivity = await DisplayActionSheet("Sélectionnez une activité", "Annuler", null, allActivitiesList.Select(a => a.ActivityName).ToArray());
+            string selectedActivity = await DisplayActionSheet("Sélectionnez une activité", null, null, allActivitiesList.Select(a => a.ActivityName).ToArray());
 
             if (!string.IsNullOrEmpty(selectedActivity))
             {
@@ -105,7 +105,7 @@ namespace Notes.Views
                 allTeachers.Teachers.Remove(teacher);
 
                 // Enregistrer les enseignants dans le fichier
-                allTeachers.SaveTeachers();
+                allTeachers.Save();
             }
         }
     }

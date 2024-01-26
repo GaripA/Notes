@@ -5,13 +5,13 @@ using System.Text.Json;
 
 namespace Notes.Models
 {
-    public class AllActivities
+    public class AllActivities : ILoad<Activity>, ISave
     {
         public ObservableCollection<Activity> Activities { get; set; }
 
         public AllActivities()
         {
-            Activities = LoadActivities() ?? new ObservableCollection<Activity>();
+            Activities = Load() ?? new ObservableCollection<Activity>();
         }
 
         private string GetActivitiesFilePath()
@@ -21,7 +21,7 @@ namespace Notes.Models
             return Path.Combine(folderPath, "activities.json");
         }
 
-        private ObservableCollection<Activity> LoadActivities()
+        public ObservableCollection<Activity> Load()
         {
             string filePath = GetActivitiesFilePath();
 
@@ -41,7 +41,7 @@ namespace Notes.Models
             return null;
         }
 
-        public void SaveActivities()
+        public void Save()
         {
             string filePath = GetActivitiesFilePath();
             string json = JsonSerializer.Serialize(Activities);

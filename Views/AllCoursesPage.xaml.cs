@@ -39,7 +39,7 @@ namespace Notes.Views
                 allCourses.Courses.Remove(course);
 
                 // Save courses to the file
-                allCourses.SaveCourses();
+                allCourses.Save();
             }
         }
     }

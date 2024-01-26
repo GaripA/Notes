@@ -34,7 +34,7 @@ namespace Notes.Views
         {
             List<string> associatedCourses = selectedStudent.AssociatedCourses.Select(a => a.CourseName).ToList();
 
-            selectedCourse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, associatedCourses.ToArray());
+            selectedCourse = await DisplayActionSheet("Sélectionnez un cours", null, null, associatedCourses.ToArray());
 
             if (!string.IsNullOrEmpty(selectedCourse))
             {
@@ -61,7 +61,7 @@ namespace Notes.Views
         private void UpdateUI()
         {
             // Rafraîchir l'affichage des étudiants
-            allStudents.LoadStudents();
+            allStudents.Load();
 
             // Mise à jour de la liaison des données de la collection
             studentsCollection.ItemsSource = null;
@@ -113,7 +113,7 @@ namespace Notes.Views
         {
             List<Course> allCursesList = allCurses.Courses.ToList();
 
-            string selectedCourse = await DisplayActionSheet("Sélectionnez un cours", "Annuler", null, allCursesList.Select(c => c.CourseName).ToArray());
+            string selectedCourse = await DisplayActionSheet("Sélectionnez un cours", null, null, allCursesList.Select(c => c.CourseName).ToArray());
 
             if (!string.IsNullOrEmpty(selectedCourse))
             {
@@ -129,7 +129,7 @@ namespace Notes.Views
                 allStudents.Students.Remove(student);
 
                 
-                allStudents.SaveStudents();
+                allStudents.Save();
             }
         }
         private async void AddStudent_Clicked(object sender, EventArgs e)

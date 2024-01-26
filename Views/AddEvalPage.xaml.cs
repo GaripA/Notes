@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Notes.Views
 {
-    public partial class AddEvalPage : ContentPage
+    public partial class AddEvalPage : ContentPage, IEnregistrer
     {
         private AllStudents allStudents;
         private Student selectedStudent;
@@ -19,7 +19,7 @@ namespace Notes.Views
             this.selectedCurse = selectedCurse;
         }
 
-        private void Enregistrer_Clicked(object sender, EventArgs e)
+        public void Enregistrer_Clicked(object sender, EventArgs e)
         {
             string evaluationInput = evaluationEntry.Text;
 
@@ -76,7 +76,7 @@ namespace Notes.Views
             association.Evaluations.Add(evaluation.ToString());
 
             // Enregistrez les changements
-            allStudents.SaveStudents();
+            allStudents.Save();
 
             // Mise à jour de l'interface utilisateur
             // (Notez que dans ce scénario, vous pourriez également choisir de mettre à jour seulement l'item spécifique dans la collection au lieu de tout recharger)

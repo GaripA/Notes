@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls;
 
 namespace Notes.Views
 {
-    public partial class CoursePage : ContentPage
+    public partial class CoursePage : ContentPage,IEnregistrer
     {
         private AllCourses allCourses;
 
@@ -16,7 +16,7 @@ namespace Notes.Views
             BindingContext = allCourses;
         }
 
-        private async void Enregistrer_Clicked(object sender, EventArgs e)
+        public async void Enregistrer_Clicked(object sender, EventArgs e)
         {
             // Récupérer le nom du cours depuis le champ de saisie
             string courseName = txtCourseName.Text;
@@ -41,7 +41,7 @@ namespace Notes.Views
             txtCourseName.Text = string.Empty;
 
             // Enregistrer les cours dans le fichier
-            allCourses.SaveCourses();
+            allCourses.Save();
 
             // Revenir à la page précédente (AllActivitiesPage)
             await Navigation.PopAsync();

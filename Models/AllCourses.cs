@@ -5,13 +5,13 @@ using System.Text.Json;
 
 namespace Notes.Models
 {
-    public class AllCourses
+    public class AllCourses : ILoad<Course>, ISave
     {
         public ObservableCollection<Course> Courses { get; set; }
 
         public AllCourses()
         {
-            Courses = LoadCourses() ?? new ObservableCollection<Course>();
+            Courses = Load() ?? new ObservableCollection<Course>();
         }
 
         private string GetCoursesFilePath()
@@ -21,7 +21,7 @@ namespace Notes.Models
             return Path.Combine(folderPath, "courses.json");
         }
 
-        private ObservableCollection<Course> LoadCourses()
+        public ObservableCollection<Course> Load()
         {
             string filePath = GetCoursesFilePath();
 
@@ -41,7 +41,7 @@ namespace Notes.Models
             return null;
         }
 
-        public void SaveCourses()
+        public void Save()
         {
             string filePath = GetCoursesFilePath();
             string json = JsonSerializer.Serialize(Courses);
@@ -53,7 +53,7 @@ namespace Notes.Models
             catch (Exception ex)
             {
                 Console.WriteLine($"Erreur lors de l'écriture dans le fichier : {ex}");
-            }
+            } 
         }
 
       

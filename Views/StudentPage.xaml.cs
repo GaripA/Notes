@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls;
 
 namespace Notes.Views
 {
-    public partial class StudentPage : ContentPage
+    public partial class StudentPage : ContentPage, IEnregistrer
     {
         private AllStudents allStudents;
 
@@ -16,7 +16,7 @@ namespace Notes.Views
             BindingContext = allStudents;
         }
 
-        private async void Enregistrer_Clicked(object sender, EventArgs e)
+        public async void Enregistrer_Clicked(object sender, EventArgs e)
         {
             try{// Retrieve name, surname, and class from input fields
             string nom = txtNom.Text;
@@ -47,7 +47,7 @@ namespace Notes.Views
             txtClasse.Text = string.Empty;
 
             // Save students to the file
-            allStudents.SaveStudents();
+            allStudents.Save();
 
             // Navigate to the AllStudentsPage
             await Shell.Current.GoToAsync(nameof(AllStudentsPage));}
