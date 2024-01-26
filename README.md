@@ -10,8 +10,10 @@ Ce projet a été codé sur une machine utilisant le système d'exploition Windo
 **Interface Segregation Principle :** Le principe de ségrégation des interfaces est respecté car chaque interface possède sa propre responsabilité au lieu d'une interface générale qui contient beaucoup de méthodes. Aussi, nos interfaces sont cohérentes et ciblées sur des fonctionnalités spécifiques.
 
 ## Diagramme de séquence :
-<img src="notes/images/diagramme_de_sequence.png" alt="Diagramme de séquence">
+![Diagramme de séquence](notes/images/diagramme_de_sequence.png)
+
 
 ## Diagramme de classe :
+![Diagramme de classe](notes/images/diagramme_classe.svg)
 
-<img src="notes/images/diagramme_classe.svg" alt="Diagramme de classe"> 
+
