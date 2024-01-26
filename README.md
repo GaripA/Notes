@@ -16,4 +16,16 @@ Ce projet a été codé sur une machine utilisant le système d'exploition Windo
 
 <img src="images/diagramme_classe.svg" alt="Diagramme de classe"> 
 
+## Quelques images du projet :
+<img src="images/image1.png">
+<img src="images/image2.png">
+<img src="images/image3.png">
+<img src="images/image4.png">
+<img src="images/image5.png">
+<img src="images/image6.png">
+<img src="images/image7.png">
+<img src="images/image8.png">
+<img src="images/image9.png">
+
+
 
